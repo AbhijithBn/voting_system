@@ -1,0 +1,13 @@
+{
+    "name":"Electronic Voting System",
+    "description":"",
+    "repository":"https://github.com/AbhijithBn/voting_system.git",
+    "keywords":["node","express","static"],
+    "image":"heroku/nodejs",
+    "scripts": {
+        "start":"node app.js"
+    },
+    "engines": {
+        "node":"10.15.0"
+    },
+}

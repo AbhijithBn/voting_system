@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Voter's Registration Form</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="../font/css/all.css"> -->
+
+    <style>
+        .radio{
+            margin-top: 10px;
+            margin-left: 30px;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex h-100 justify-content-center">
+
+            <div class="card mt-5 shadow-lg p-4  mb-4 bg-white">
+
+                    <div class="d-flex card-header justify-content-center">
+                        <h3>Voter Registration Form</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <form class='form-register', action='/voter_reg', method='POST'>    
+                            <!-- first-name    -->
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">First Name</span>
+                                    </div>
+                                    <input type="text" name="firstname" class="form-control" placeholder="" >
+                            </div>
+                            <!-- lastname -->
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">Last Name</span>
+                                </div>
+                                <input type="text" name="lastname" class="form-control" placeholder="" >
+                            </div>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Email ID</span>
+                                </div>
+                                <input type="email" name="email" class="form-control" placeholder="" >
+                            </div>
+                            <!-- phone-number -->
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                </div>
+                                <input type="text" name="phonenumber" class="form-control" placeholder="Registered with Aadhar ID" >
+                            </div>
+                            <!-- voterID -->
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text">Voter ID:</span>
+                                    </div>
+                                    <input type="text" name="voterid" class="form-control" placeholder="" >
+                                </div>
+                            <!-- password -->
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Enter Password</span>
+                                </div>
+                                <input type="password" name="password" class="form-control" placeholder="">
+                            </div>
+                            <!--reenter password -->
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Re-enter Password</span>
+                                </div>
+                                <input type="password" name="password2" class="form-control" placeholder="">
+                            </div>
+
+                            <!-- select constituency -->
+                            <div class="constituency_select">
+                                <label > Select constituency :</label>
+                                <label><input type="radio" name="const" value="south">Bangalore South</label>
+                                <label><input type="radio" name="const" value="north">Bangalore North</label>
+                                <label><input type="radio" name="const" value="east">Bangalore East</label>
+                                <label><input type="radio" name="const" value="west">Bangalore West</label>
+                            </div> 
+
+                        
+                            <!-- horizontal-line -->
+                            <div>
+                                <hr>
+                            </div>
+
+                            <div class="d-flex justify-content-center form-group">
+                                <input type="submit" value="Submit" class="btn btn-block btn-success">    
+                            </div>
+
+                            
+
+                            <div class="d-flex justify-content-center form-group">
+                                <button type="reset" value="Reset" class="btn btn-block btn-danger">Reset</button>
+                            </div>
+
+
+                        </form>
+                  
+                    </div>
+
+                    <!-- CARD FOOTER -->
+                    <div class="d-flex card-footer justify-content-center">
+                        Website Under Development
+                    </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+    
+</body>
+</html>>
