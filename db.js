@@ -1,5 +1,5 @@
 module.exports = {
-	'url':'mongodb://localhost/pbl'
+	'url':'mongodb+srv://AbhijithBn:Abhi123@cluster0-q3zcw.mongodb.net/test?retryWrites=true'
 }
 
 // 'mongodb+srv://AbhijithBn:Abhi123@cluster0-q3zcw.mongodb.net/test?retryWrites=true'

@@ -104,7 +104,7 @@ module.exports=function(passport){
 
     //render the voting page incase of correct authentication of the user
 	router.get('/voting', isLoggedIn, function(req, res){
-        User.find({constituency:req.user.constituency}).then(user=>{
+        User.find({constituency:req.user.constituency,isCandid:'true'}).then(user=>{
             if(user){
                 res.render('voting',{voter:req.user,candidate:user});
             }
@@ -113,7 +113,19 @@ module.exports=function(passport){
             }
         })
         
-	});
+    });
+    //
+
+    router.get('/voted',function(req,res){
+        res.render('voted');
+    })
+    
+    router.post('/voted',function(req,res){
+        console.log(req.body);
+        res.redirect('/voted');
+    })
+
+
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------
     
