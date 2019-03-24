@@ -24,18 +24,20 @@
 <body>
     <div class="container">
         <div class="d-flex h-100 justify-content-center">
+            Welcome <%=voter.firstName%>
             <% for(var i=0; i < candidate.length; i++) { %> 
 
             <div class="card mt-5 shadow-lg p-4  mb-4 mr-4 bg-white">
 
-                    <div class="d-flex card-header justify-content-center">
-                        <h3><%= candidate[i].firstName %></h3>
-                    </div>
+                    <!-- <div class="d-flex card-header justify-content-center">
+                    </div> -->
 
-                    <div class="card-body">
+                    
                        
-                        <form class='form-register', action='/voted', method='POST'> 
-                            
+                    <form class=' card-body form-register', action='/voted', method='POST'> 
+                            <div id="div_body" class="d-flex justify-content-center">
+                                <h3><%= candidate[i].firstName %></h3>
+                            </div>
                         
                             <!-- horizontal-line -->
                             <div>
@@ -43,26 +45,12 @@
                             </div>
 
                             <div class="d-flex justify-content-center form-group">
-                                <input type="submit" value="Vote" class="btn btn-block btn-success">    
-                            </div>
-
-                            
-
-                            <div class="d-flex justify-content-center form-group">
-                                <button type="reset" value="Reset" class="btn btn-block btn-danger">Reset</button>
+                                <input id="<%= candidate[i].firstName %>" type="submit" value="Vote" class="btn btn-block btn-success votebutton>" onclick="vote_func(id)" >    
                             </div>
 
 
-                        </form>
+                    </form>
                   
-                    </div>
-
-                    <!-- CARD FOOTER -->
-                    <div class="d-flex card-footer justify-content-center">
-                        Website Under Development
-                    </div>
-
-
             </div>
             <% } %>
         </div>
@@ -70,24 +58,78 @@
 
     </div>
     
+    <script>
+        
+        // var i;
+        // var count= <%=JSON.stringify(candidate.length)%>;
+        // console.log(count);
+        // for(i=0;i<count;i++)
+        // {
+        //     var candid=document.getElementsByTagName('H3')[i];
+        //     var candid_data=candid.innerHTML;
+        //     // console.log(candid_data);
+
+        //     var button_nav= candid.parentNode.parentNode.childNodes[8];
+        //     console.log(button_nav);
+        //     var button = document.getElementsByClassName('votebutton');
+        //     button.id=candid;
+        // }
+
+        // function vote_func(){
+        //     console.log(candid);
+        //     console.log(button.id);
+        // }
+
+        
+
+
+        // var button = document.getElementsByClassName('votebutton')[0];
+        // console.log(button)
+        // button.onclick=vote_func()
+        
+        // function vote_func(){
+        //     // var id_is= button.id;
+        //     // console.log(id_is);
+        // }
+
+
+        // var i;
+        // var count= <%=JSON.stringify(candidate.length)%>;
+        // console.log(count);
+        // for(i=0;i<count;i++)
+        // {
+        //     var button=document.getElementsByTagName('INPUT')[i];
+        //     // console.log(button.id);
+
+            
+        // }
+
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+
+
+        function vote_func(id){
+            console.log("Event occured");
+            console.log(id);
+            var data={firstname:id};
+            // console.log(data);
+            fetch('/clicked', {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+                'Content-Type': 'application/json'
+            }
+            }).then(res => res.json())
+            .then(response => console.log('Success:', JSON.stringify(response)))
+            .catch(error => console.error('Error:', error));
+        }
 
 
 
+    </script>
+</body>
+  
 
-        <!-- <h2 >Welcome <%=voter.firstName%></h2> -->
-        <!-- <h2 >Your constituency is <%=voter.constituency%></h2> -->
-        <!-- <h2>Voter is <%=voter%></h2> -->
-
-        <!-- <h2>No of candidates : <%=candidate.length%></h2> -->
-
-        <!-- <ul> -->
-            <!-- <% for(var i=0; i < candidate.length; i++) { %> -->
-            <!-- <li> -->
-                <!-- <%= candidate[i].firstName %> -->
-            <!-- </li> -->
-            <!-- <% } %> -->
-        <!-- </ul> -->
-
-
-    </body>
 </html>

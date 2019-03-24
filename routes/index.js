@@ -11,6 +11,8 @@ var User=require('../models/user');//collection for voters
 var bcrypt=require('bcryptjs');
 
 var bodyParser=require('body-parser');
+let urlencodedParser = bodyParser.urlencoded({ extended: false });
+var body_parse=bodyParser.json()
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
@@ -34,7 +36,7 @@ module.exports=function(passport){
     })
 
     router.post('/voter_reg',function(req,res){
-                const {firstname,lastname,email,phonenumber,voterid,password,password2}=req.body;
+                const {firstname,lastname,email,phonenumber,voterid,password,password2,hasVoted}=req.body;
                 console.log("Request BODY :",req.body);
                 // console.log("firstname :",firstname,"lastname :",lastname,"email :",email ,"phonenumber :",phonenumber,"aadhar number :",aadhar,"dateofbirth :",dateofbirth,"gender :",gender);
 
@@ -65,6 +67,7 @@ module.exports=function(passport){
                             newUser.password=req.body.password;
                             newUser.constituency=req.body.const;
                             newUser.isCandid='false';
+                            newUser.hasVoted='false';
                             console.log(newUser.lastName);
 
                             bcrypt.genSalt(10, (err, salt) => {
@@ -121,12 +124,39 @@ module.exports=function(passport){
     })
     
     router.post('/voted',function(req,res){
-        console.log(req.body);
+        // console.log(typeof req.user.firstName);
+        var name=req.user.firstName;
+        User.findOneAndUpdate({'firstName':req.user.firstName},{hasVoted:'true'},
+        function(user){
+            console.log("User in database :",user);
+            if(user){
+                // console.log("Your vote has been saved");
+                user.save();
+            }
+            else{
+                // console.log("Error saving vote to database");
+            }
+        });
         res.redirect('/voted');
+
     })
 
 
-
+    router.post('/clicked',function(req,res){
+        console.log("REQUEST IS :",req.body.firstname);
+        console.log(typeof req.body.firstname);
+        User.findOneAndUpdate({firstName:req.body.firstname},{hasVoted:'true'},
+        function(user){
+            console.log("User in database :",user);
+            if(user){
+                console.log("Update successful");
+                user.save();
+            }
+            else{
+                console.log("Error in updating voting information");
+            }
+        });
+    })
     //----------------------------------------------------------------------------------------------------------------------------------------------------------
     
     //handling get request for voters
@@ -160,7 +190,6 @@ module.exports=function(passport){
                 else{
 
                     User.findOne({'voterId':voterid}).then(user=>{
-                        console.log("Candidate :",user);
                         if(user){
                             console.log("User already exists");
                             res.render('voter_login');
@@ -176,6 +205,7 @@ module.exports=function(passport){
                             newCand.party=req.body.party;
                             newCand.constituency=req.body.const;
                             newCand.isCandid='true';
+                            newCand.hasVoted='false';
                             console.log(newCand.lastName);
 
                             bcrypt.genSalt(10, (err, salt) => {
@@ -207,15 +237,3 @@ module.exports=function(passport){
     return router;
 
 }
-
-
-// <!-- <h1 id="heading">Welcome to Voting Page</h1>
-
-//     <p id="profile"></p>
-
-//     <script>
-//         document.getElementById('heading').onload=function(){displayuser()};
-//         function displayuser(){
-//             document.getElementById('profile').innerHTML= <%=user.firstname%>
-//         }
-//     </script> -->

@@ -13,6 +13,7 @@ module.exports=function(passport){
         // console.log("inside local strategy function of voter")
         User.findOne({'voterId':username}, 
         function(err, user) {
+            console.log('User in login :',user);
             // In case of any error, return using the done method      
             if (err)
             {
@@ -28,6 +29,10 @@ module.exports=function(passport){
             if (!isValidPassword(user, password)){
                 console.log('Invalid Password');
                 return done(null, false);
+            }
+            if(user.hasVoted=='true'){
+                console.log("you have already voted");
+                return done(null,false);
             }
             // User and password both match, return user from 
             // done method which will be treated like success
