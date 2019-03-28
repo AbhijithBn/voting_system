@@ -84,13 +84,10 @@ module.exports=function(passport){
                                     })
                                     .catch(err => console.log(err));
                                 });
-                            });
-        
-                            
+                            });           
                         }
                     })
-                }
-            
+                }       
     });
 
 
@@ -253,6 +250,9 @@ module.exports=function(passport){
 
     })
 
+
+
+    /*
         //send count to result page
     router.get('/chart',function(req,res){
         User.aggregate([{$group:{_id:'$party',count:{$sum:'$votecount'}}}],function(err,result){
@@ -267,7 +267,7 @@ module.exports=function(passport){
             }
         })
 
-    })
+    })*/
 
     return router;
 

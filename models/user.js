@@ -2,7 +2,7 @@
 var mongoose=require('mongoose');
 module.exports = mongoose.model('users',
 {
-    firstName:{type: String, unique: true, required: true},
+    firstName:{type: String, required: true},
     lastName:String,
     email:{type: String, unique: true, required: true},
     phoneNumber:{type: Number, required: true},
