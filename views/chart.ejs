@@ -2,34 +2,36 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Voting Chart</title>
+  <title>Weekly Chart</title>
 
   <script >
       // this is to plot the graph
 
-      window.onclick = function () {  // can be window.onload but graph refreshes only after you refresh the entire window again
+      window.onload = function () {  // can be window.onload but graph refreshes only after you refresh the entire window again
 
-            fetch('/peoplecount')
+            fetch('/chart_data')
             .then((res) =>res.json())
             .then((data)=>
-            {
+            { 
+              console.log(data);
 
               var dataPoints1=[];// this s for people in
               var dataPoints2=[];// this is for people out
+              var dataPoints3=[];//
 
 
-              var chart=new CanvasJS.Chart("peoplecounterday",{
-                backgroundColor: "#F5DEB3",
+              var chart=new CanvasJS.Chart("total_votes",{
+                backgroundColor: "#FFFFFF",
 
                 title:{
-                  text:"Counter Chart"
+                  text:"Elections 2019"
                 },
                 axisX:{
-                  title:"Count",
+                  title:"Party",
                   fontSize: 18,
                 },
                 axisY:{
-                  title:"Value",
+                  title:"Votes",
                   fontSize: 18,
                 },
                 legend: {
@@ -41,7 +43,7 @@
                 },
                 data:[{   // since all of them are of the same data types , we have an array of objects
                   type:"column",
-                  name:"In",
+                  name:"BJP",
                   xValueType:"dateTime",
                   xValueFormatString: "hh:mm:ss TT",//keeping a track on an hourly basis
                   dataPoints:dataPoints1,
@@ -53,10 +55,18 @@
                 },
                 {
                   type:"column",
-                  name:"Out",
+                  name:"Congress",
                   xValueType:"dateTime",
                   xValueFormatString: "hh:mm:ss TT",//keeping a track on an hourly basis
                   dataPoints:dataPoints2,
+                  showInLegend: true
+                },
+                {
+                  type:"column",
+                  name:"AAP",
+                  xValueType:"dateTime",
+                  xValueFormatString: "hh:mm:ss TT",//keeping a track on an hourly basis
+                  dataPoints:dataPoints3,
                   showInLegend: true
                 }]
               });
@@ -70,7 +80,7 @@
                 chart.render();
               }
 
-              var updateInterval = 3000;
+              var updateInterval = 1000;
 
               var yValue1 = 0;//initial y values for both people in and people out
               var yValue2 = 0;
@@ -85,19 +95,21 @@
               {
                 dataPoints1.push({
                 x: time.getTime(),
-                y: data.in
+                y: data.bjp_count
+                });
 
-              });
-
-
-
-              dataPoints2.push({
+                dataPoints2.push({
                 x: time.getTime(),
-                y: data.out
+                y: data.cong_count
+                });
 
-              });
-              chart.options.data[0].legendText = " people in :" + data.in;
-	            chart.options.data[1].legendText = " people out :" + data.out;
+                dataPoints3.push({
+                x: time.getTime(),
+                y: data.aap_count
+                });
+              chart.options.data[0].legendText = " BJP :" + data.bjp_count;
+	            chart.options.data[1].legendText = " Congress :" + data.cong_count;
+              chart.options.data[1].legendText = " AAP :" + data.aap_count;
 
               chart.render();
 
@@ -117,19 +129,14 @@
 
 
 </head>
-<body style="background-color: #F5DEB3">
+<body style="background-color: rgb(255, 255, 255) height:300%">
+  <div class="container">
+    <div id="total_votes" style="height: 300%; width: 100%; justify-content: center;">
+    </div>
 
-
-  <div id="peoplecounterday" style="height: 200px; width: 100%; justify-content: center;">
   </div>
-
   <script src="https://canvasjs.com/assets/script/canvasjs.min.js">
   </script>
-
-
-
-
-
 
 </body>
 </html>

@@ -252,11 +252,16 @@ module.exports=function(passport){
 
     })
 
-
-
-    /*
-        //send count to result page
+    //render chart for statistics
     router.get('/chart',function(req,res){
+        res.render('chart');
+    })
+
+
+
+    
+    //send count to result page
+    router.get('/chart_data',function(req,res){
         User.aggregate([{$group:{_id:'$party',count:{$sum:'$votecount'}}}],function(err,result){
             if(err){
                 // res.render('result');
@@ -264,12 +269,12 @@ module.exports=function(passport){
                 
             }
             else{
-                res.render('result',{aap_count:result[1].count,cong_count:result[2].count,bjp_count:result[3].count})
-                console.log(result);
+                res.json({aap_count:result[1].count,cong_count:result[2].count,bjp_count:result[3].count})
+                // console.log(result);
             }
         })
 
-    })*/
+    })
 
     return router;
 
