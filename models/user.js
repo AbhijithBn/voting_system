@@ -12,6 +12,6 @@ module.exports = mongoose.model('users',
     party:String,
     isCandid:String,
     hasVoted:String,
-    votecount=Number
+    votecount:Number
 })
 

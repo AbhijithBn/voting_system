@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>
+            Election Results
+        </title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+
+        <style>
+                html, body
+                {
+                  height: 100%;
+                  width: 100%;
+                  background-color:rgb(143, 137, 137);
+                  margin: 0;
+                }
+                .flex-container
+                {
+                  height: 100%;
+                  padding: 0;
+                  margin: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+                .row
+                {
+                  width: 60%;
+                  margin: 0px;
+                  /*display: flex;
+                  align-items: center;
+                  justify-content:space-between;*/
+                }
+                .firstrow
+                {
+            
+                  width: 100%;
+                  color: rgb(254, 254, 255);
+                  font-size: 30px;
+                  display: flex;
+                  align-items: center;
+                  justify-content:center;
+                }
+                .secondrow
+                {
+                  width:100%;
+                  font-size: 180px;
+                  font-family: Sans-serif;
+                  color:rgb(14, 202, 161) ;
+                  line-height: 0.9;
+                  display: flex;
+                  align-items: center;
+                    justify-content:center;
+                }
+            
+              </style>
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="flex-container">
+                <div  >
+
+                    <div >
+                        <div class="firstrow" >BJP</div>
+                        <div class="secondrow" id="peopleout"><%=bjp_count%></div>
+                    </div>
+
+                    <div >
+                        <div class="firstrow" style="margin-top:30px;">Congress</div>
+                        <div class="secondrow" id="peoplein"><%=cong_count%></div>
+                    </div>
+
+                    <div >
+                        <div class="firstrow" style="margin-top:30px;">AAP</div>
+                        <div class="secondrow" id="peoplein"><%=aap_count%></div>
+                    </div>
+
+                </div>
+            </div>
+    
+    
+        </div>
+    </body>
+</html>

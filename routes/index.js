@@ -1,5 +1,4 @@
 var express=require('express');
-
 //router to route this to app.js
 var router=express.Router();
 router.use(express.static('public'));
@@ -122,6 +121,7 @@ module.exports=function(passport){
     router.get('/voted',function(req,res){
         res.render('voted');
     })
+
     
     router.post('/voted',function(req,res){
         // console.log(typeof req.user.firstName);
@@ -145,11 +145,11 @@ module.exports=function(passport){
     router.post('/clicked',function(req,res){
         console.log("REQUEST IS :",req.body.firstname);
         console.log(typeof req.body.firstname);
-        User.findOneAndUpdate({firstName:req.body.firstname},{hasVoted:'true'},
+        User.findOneAndUpdate({firstName:req.body.firstname},{$inc:{votecount:1}},
         function(user){
-            console.log("User in database :",user);
+            // console.log("User in database :",user);
             if(user){
-                console.log("Update successful");
+                // console.log("Update successful");
                 user.save();
             }
             else{
@@ -157,14 +157,16 @@ module.exports=function(passport){
             }
         });
     })
+
+
     //----------------------------------------------------------------------------------------------------------------------------------------------------------
     
-    //handling get request for voters
+    //handling get request for candidates
     router.get('/candid_login', function(req, res) {
         res.render('voter_login');
     });
 
-    //render voter registration page
+    //render candidate registration page
     router.get('/candid_reg',function(req,res){
         res.render('candid_reg');
     })
@@ -206,6 +208,7 @@ module.exports=function(passport){
                             newCand.constituency=req.body.const;
                             newCand.isCandid='true';
                             newCand.hasVoted='false';
+                            newCand.votecount=0;
                             console.log(newCand.lastName);
 
                             bcrypt.genSalt(10, (err, salt) => {
@@ -234,6 +237,38 @@ module.exports=function(passport){
 
 
     
+    //send count to result page
+    router.get('/result',function(req,res){
+        User.aggregate([{$group:{_id:'$party',count:{$sum:'$votecount'}}}],function(err,result){
+            if(err){
+                // res.render('result');
+                throw err;
+                
+            }
+            else{
+                res.render('result',{aap_count:result[1].count,cong_count:result[2].count,bjp_count:result[3].count})
+                console.log(result);
+            }
+        })
+
+    })
+
+        //send count to result page
+    router.get('/chart',function(req,res){
+        User.aggregate([{$group:{_id:'$party',count:{$sum:'$votecount'}}}],function(err,result){
+            if(err){
+                // res.render('result');
+                throw err;
+                
+            }
+            else{
+                res.render('result',{aap_count:result[1].count,cong_count:result[2].count,bjp_count:result[3].count})
+                console.log(result);
+            }
+        })
+
+    })
+
     return router;
 
 }
