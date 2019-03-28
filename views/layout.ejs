@@ -1,66 +1,132 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="en">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
 
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-grey" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <!-- <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a> -->
+    <a href="voter_login" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Voter Login</a>
+    <a href="candid_login" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Candidate Login</a>
+    <a href="voter_reg" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Voter Registration</a>
+    <a href="candid_reg" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Candidate Registration</a>
+    <a href="result" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Election Result</a>
+  </div>
 
-        <title>
-            Navigation Page
-        </title>
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="voter_login" class="w3-bar-item w3-button w3-padding-large">Voter Login</a>
+    <a href="candid_login" class="w3-bar-item w3-button w3-padding-large">Candidate Login</a>
+    <a href="voter_reg" class="w3-bar-item w3-button w3-padding-large">Voter Registration</a>
+    <a href="candid_reg" class="w3-bar-item w3-button w3-padding-large">Candidate Registration</a>
+  </div>
+</div>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-        <!-- <link rel="stylesheet" href="../font/css/all.css"> -->
+<!-- Header -->
+<header class="w3-container w3-blue w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">e-Voting System</h1>
+  <!-- <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button> -->
+</header>
 
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Abstract</h1>
+      <h5 class="w3-padding-32">>The rapid advancement in information and communications technologies
+          has given rise to new applications that were impossible just few years ago. One of these
+           applications is e-voting. The term “e-voting” is defined as any voting method where the
+            voter’s intention is expressed or collected by electronic means. This report details the
+             design and implementation of a generic and secure electronic voting system where voters
+              can cast their votes anytime, anywhere and using a number of electronic devices
+          including private computer networks, web and mobile phones./h5>
+<!-- 
+      <p class="w3-text-grey">The rapid advancement in information and communications technologies
+         has given rise to new applications that were impossible just few years ago. One of these
+          applications is e-voting. The term “e-voting” is defined as any voting method where the
+           voter’s intention is expressed or collected by electronic means. This report details the
+            design and implementation of a generic and secure electronic voting system where voters
+             can cast their votes anytime, anywhere and using a number of electronic devices
+         including private computer networks, web and mobile phones.</p> -->
+    </div>
 
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Menu</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <div class="w3-third w3-center">
+      <!-- <i class="fa fa-anchor w3-padding-64 w3-text-blue"></i> -->
+    </div>
+  </div>
+</div>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Registration
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="voter_login">Voter Login</a>
-                        <a class="dropdown-item" href="candid_login">Candidate Login</a>
-                        <a class="dropdown-item" href="voter_reg">Voter Registration</a>
-                        <a class="dropdown-item" href="candid_reg">Candidate Registration</a>
-                        <!-- <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        </div> -->
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Voters List <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="result">Election Result <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="chart">Stats <span class="sr-only">(current)</span></a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </nav>
-        
+<!-- Second Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <!-- <i class="fa fa-coffee w3-padding-64 w3-text-blue w3-margin-right"></i> -->
+    </div>
 
+    <div class="w3-twothird">
+      <h1>Conclusion</h1>
+      <h5 class="w3-padding-32">Elections allow the populace to choose their representatives and express
+          their preferences for how they will be governed. Naturally, the integrity of the election 
+          process is fundamental to the integrity of democracy itself.
+          The election system must be sufficiently robust to withstand a variety of fraudulent
+          behaviors and must be sufficiently transparent and comprehensible that voters and candidates
+          can accept the results of an election. However, this cannot be said for conventional voting
+          systems. Electronic voting is emerging as significant alternative to these conventional
+          systems in the delivery of reliable and trusted elections.</h5>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    
-        
-    </body>
+      <!-- <p class="w3-text-grey">Elections allow the populace to choose their representatives and express
+        their preferences for how they will be governed. Naturally, the integrity of the election 
+        process is fundamental to the integrity of democracy itself.
+        The election system must be sufficiently robust to withstand a variety of fraudulent
+        behaviors and must be sufficiently transparent and comprehensible that voters and candidates
+        can accept the results of an election. However, this cannot be said for conventional voting
+        systems. Electronic voting is emerging as significant alternative to these conventional
+        systems in the delivery of reliable and trusted elections. </p> -->
+    </div>
+  </div>
+</div>
 
+<!-- <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
+</div> -->
+
+<!-- Footer
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+ <p>Poweblue by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer> -->
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
 </html>

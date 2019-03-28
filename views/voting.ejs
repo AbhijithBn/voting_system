@@ -23,14 +23,21 @@
 </head>
 <body>
     <div class="container">
+            <div class="d-flex justify-content-center">
+                    <h1>Welcome <%=voter.firstName%></h1>
+                </div>
         <div class="d-flex h-100 justify-content-center">
-            Welcome <%=voter.firstName%>
+            
+            
             <% for(var i=0; i < candidate.length; i++) { %> 
 
             <div class="card mt-5 shadow-lg p-4  mb-4 mr-4 bg-white">
 
-                    <!-- <div class="d-flex card-header justify-content-center">
-                    </div> -->
+                    <div class="d-flex card-header justify-content-center">
+                        <div id="div_body" class="d-flex justify-content-center">
+                            <h3>Party : <%= candidate[i].party %></h3>
+                        </div>
+                    </div>
 
                     
                        
@@ -38,6 +45,7 @@
                             <div id="div_body" class="d-flex justify-content-center">
                                 <h3><%= candidate[i].firstName %></h3>
                             </div>
+                            
                         
                             <!-- horizontal-line -->
                             <div>

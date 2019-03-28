@@ -11,7 +11,6 @@ app.use(bodyParser.urlencoded({ extended: true }));// if there is an error at bo
 app.use(bodyParser.json());//body is represented in json format
 app.use(express.static('public'));// for the use of html files
 
-
 //EJS
 app.set('view engine','ejs');
 
