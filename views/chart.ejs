@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Weekly Chart</title>
+  <title>Results Chart</title>
 
   <script >
       // this is to plot the graph
@@ -18,8 +18,6 @@
               var dataPoints1=[];// this s for people in
               var dataPoints2=[];// this is for people out
               var dataPoints3=[];//
-
-
               var chart=new CanvasJS.Chart("total_votes",{
                 backgroundColor: "#FFFFFF",
 
@@ -43,7 +41,7 @@
                 },
                 data:[{   // since all of them are of the same data types , we have an array of objects
                   type:"column",
-                  name:"BJP",
+                  name:"PBJ",
                   xValueType:"dateTime",
                   xValueFormatString: "hh:mm:ss TT",//keeping a track on an hourly basis
                   dataPoints:dataPoints1,
@@ -55,7 +53,7 @@
                 },
                 {
                   type:"column",
-                  name:"Congress",
+                  name:"GNOC",
                   xValueType:"dateTime",
                   xValueFormatString: "hh:mm:ss TT",//keeping a track on an hourly basis
                   dataPoints:dataPoints2,
@@ -63,7 +61,7 @@
                 },
                 {
                   type:"column",
-                  name:"AAP",
+                  name:"PAA",
                   xValueType:"dateTime",
                   xValueFormatString: "hh:mm:ss TT",//keeping a track on an hourly basis
                   dataPoints:dataPoints3,
@@ -95,21 +93,21 @@
               {
                 dataPoints1.push({
                 x: time.getTime(),
-                y: data.bjp_count
+                y: data.pbj_count
                 });
 
                 dataPoints2.push({
                 x: time.getTime(),
-                y: data.cong_count
+                y: data.gnoc_count
                 });
 
                 dataPoints3.push({
                 x: time.getTime(),
-                y: data.aap_count
+                y: data.paa_count
                 });
-              chart.options.data[0].legendText = " BJP :" + data.bjp_count;
-	            chart.options.data[1].legendText = " Congress :" + data.cong_count;
-              chart.options.data[2].legendText = " AAP :" + data.aap_count;
+                chart.options.data[0].legendText = " PBJ :" + data.pbj_count;
+                chart.options.data[1].legendText = " GNOC :" + data.gnoc_count;
+                chart.options.data[2].legendText = " PAA :" + data.paa_count;
 
               chart.render();
 
@@ -117,10 +115,6 @@
               updateChart();
 
               setInterval(function(){updateChart},updateInterval);
-
-
-
-
             })
           }
 

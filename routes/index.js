@@ -67,14 +67,14 @@ module.exports=function(passport){
                             newUser.constituency=req.body.const;
                             newUser.isCandid='false';
                             newUser.hasVoted='false';
-                            console.log(newUser.lastName);
+                            // console.log(newUser.lastName);
 
                             bcrypt.genSalt(10, (err, salt) => {
                                 bcrypt.hash(newUser.password, salt, (err, hash) => {
                                     if (err) 
                                         throw err;
                                 newUser.password = hash;
-                                console.log(hash);
+                                // console.log(hash);
                                 newUser.save().then(user => {
                                     console.log(
                                         'success_msg',
@@ -245,7 +245,7 @@ module.exports=function(passport){
                 
             }
             else{
-                res.render('result',{aap_count:result[1].count,cong_count:result[2].count,bjp_count:result[3].count})
+                res.render('result',{paa_count:result[0].count,gnoc_count:result[2].count,pbj_count:result[3].count})
                 console.log(result);
             }
         })
@@ -257,9 +257,6 @@ module.exports=function(passport){
         res.render('chart');
     })
 
-
-
-    
     //send count to result page
     router.get('/chart_data',function(req,res){
         User.aggregate([{$group:{_id:'$party',count:{$sum:'$votecount'}}}],function(err,result){
@@ -269,7 +266,7 @@ module.exports=function(passport){
                 
             }
             else{
-                res.json({aap_count:result[1].count,cong_count:result[2].count,bjp_count:result[3].count})
+                res.json({paa_count:result[0].count,gnoc_count:result[2].count,pbj_count:result[3].count})
                 // console.log(result);
             }
         })
